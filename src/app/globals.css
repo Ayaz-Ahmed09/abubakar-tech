@@ -1,0 +1,670 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - Navy / Gold / Aqua / Teal / Sand palette (exact swatch values) */
+  --color-navy: #083A4F;
+  --color-gold: #A58D66;
+  --color-aqua: #C0D5D6;
+  --color-teal: #407E8C;
+  /* sand token now holds a soft, pure ivory — cascades to body, .bg-sand-gradient, hero, forms */
+  --color-sand: #FBF8F2;
+
+  /* lux = shiny old-money gold accent (badges, key highlights, stat numbers) */
+  --color-lux: #C9A227;
+
+  /* beige = warm neutral card surface — contrast partner for gold + lune noir */
+  --color-beige: #E7D8BC;
+
+  /* blue = royal blue action accent (buttons, thin dividers) */
+  --color-blue: #2E4ED2;
+  --color-blue-700: color-mix(in oklch, #2E4ED2 82%, black);
+
+  /* primary = Teal (brand action color: buttons, links, icons) */
+  --color-primary-50: color-mix(in oklch, var(--color-teal) 6%, white);
+  --color-primary-100: var(--color-aqua);
+  --color-primary-400: color-mix(in oklch, var(--color-teal) 75%, white);
+  --color-primary-500: color-mix(in oklch, var(--color-teal) 90%, white);
+  --color-primary-600: var(--color-teal);
+  --color-primary-700: color-mix(in oklch, var(--color-teal) 85%, black);
+  --color-primary-900: color-mix(in oklch, var(--color-teal) 45%, var(--color-navy));
+
+  /* accent = Gold (hover/interactive highlight color) */
+  --color-accent-50: color-mix(in oklch, var(--color-gold) 6%, white);
+  --color-accent-100: color-mix(in oklch, var(--color-gold) 16%, white);
+  --color-accent-400: color-mix(in oklch, var(--color-gold) 80%, white);
+  --color-accent-500: var(--color-gold);
+  --color-accent-600: color-mix(in oklch, var(--color-gold) 90%, black);
+  --color-accent-700: color-mix(in oklch, var(--color-gold) 78%, black);
+
+  /* lux gold scale */
+  --color-lux-50: color-mix(in oklch, var(--color-lux) 8%, white);
+  --color-lux-100: color-mix(in oklch, var(--color-lux) 20%, white);
+  --color-lux-200: color-mix(in oklch, var(--color-lux) 34%, white);
+  --color-lux-400: color-mix(in oklch, var(--color-lux) 72%, white);
+  --color-lux-500: var(--color-lux);
+  --color-lux-600: color-mix(in oklch, var(--color-lux) 86%, black);
+  --color-lux-700: color-mix(in oklch, var(--color-lux) 70%, black);
+
+  /* lune = Lune Noir — iconic near-black for headings (pairs with gold on ivory) */
+  --color-lune: #141518;
+
+  /* dark = Navy (dark sections, heading text) */
+  --color-dark-900: var(--color-navy);
+  --color-dark-800: color-mix(in oklch, var(--color-navy) 90%, white);
+  --color-dark-700: color-mix(in oklch, var(--color-navy) 78%, white);
+
+  /* Fonts */
+  --font-heading: var(--font-outfit), sans-serif;
+  --font-body: var(--font-google-sans), sans-serif;
+
+  /* Glass effect tokens */
+  --color-glass: oklch(0.98 0 0 / 0.08);
+  --color-glass-border: oklch(0.98 0 0 / 0.15);
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply font-body text-slate-800;
+    background: linear-gradient(135deg, var(--color-sand) 0%, color-mix(in oklch, var(--color-sand) 82%, var(--color-gold)) 100%);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading text-lune;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+
+  /* Sand -> Gold base surface, used wherever a section previously had a flat sand background */
+  .bg-sand-gradient {
+    background: linear-gradient(135deg, var(--color-sand) 0%, color-mix(in oklch, var(--color-sand) 82%, var(--color-gold)) 100%);
+  }
+
+  /* Apple Liquid Glass Utility Classes */
+
+  /* Clear Liquid Glass (Desktop Header & Light Surfaces) */
+  .liquid-glass-clear {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.42) 50%, rgba(255, 255, 255, 0.58) 100%);
+    backdrop-filter: blur(28px) saturate(190%) contrast(102%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(102%);
+    border: 1px solid rgba(255, 255, 255, 0.60);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 1px 0 rgba(15, 23, 42, 0.05),
+      0 12px 32px -4px rgba(15, 23, 42, 0.08),
+      0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  }
+
+  /* Scrolled Clear Liquid Glass Header */
+  .liquid-glass-scrolled {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.75) 100%);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.90),
+      inset 0 -1px 1px 0 rgba(15, 23, 42, 0.08),
+      0 18px 42px -4px rgba(15, 23, 42, 0.12);
+  }
+
+  /* Dark Tinted Liquid Glass (Mobile Drawer / Dark Overlays) */
+  .liquid-glass-dark-tint {
+    position: relative;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.72) 50%, rgba(15, 23, 42, 0.80) 100%);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.30),
+      inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.35),
+      0 24px 60px -8px rgba(2, 6, 23, 0.50);
+  }
+
+  /* Apple Liquid Glass Counter Card - Vibrant Orange & Creamy Orange Gradient */
+  .liquid-glass-counter-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(64, 126, 140, 0.95) 0%, rgba(8, 58, 79, 0.90) 45%, rgba(192, 213, 214, 0.92) 100%);
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.75),
+      inset 0 -1.5px 1px 0 rgba(6, 30, 41, 0.25),
+      0 20px 50px -6px rgba(64, 126, 140, 0.35);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+    will-change: transform, box-shadow;
+  }
+
+  .liquid-glass-counter-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.45), transparent 50%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent 60%);
+    pointer-events: none;
+  }
+
+  .liquid-glass-counter-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.65);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1.5px 1px 0 rgba(6, 30, 41, 0.25),
+      0 28px 65px -6px rgba(64, 126, 140, 0.45);
+  }
+
+  /* Gold + Lune Noir Liquid Glass — deep near-black glass with metallic gold trim (old-money luxe) */
+  .liquid-glass-gold-noir {
+    position: relative;
+    background: linear-gradient(145deg, rgba(20, 21, 24, 0.92) 0%, rgba(30, 27, 19, 0.88) 45%, rgba(16, 17, 20, 0.94) 100%);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(201, 162, 39, 0.45);
+    box-shadow:
+      inset 0 1px 1px 0 rgba(245, 227, 163, 0.32),
+      inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.55),
+      0 20px 50px -6px rgba(0, 0, 0, 0.50);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+    will-change: transform, box-shadow;
+  }
+
+  .liquid-glass-gold-noir::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(201, 162, 39, 0.22), transparent 55%),
+      linear-gradient(135deg, rgba(245, 227, 163, 0.10), transparent 60%);
+    pointer-events: none;
+  }
+
+  .liquid-glass-gold-noir:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 162, 39, 0.78);
+    box-shadow:
+      inset 0 1px 1px 0 rgba(245, 227, 163, 0.50),
+      inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.55),
+      0 28px 65px -6px rgba(0, 0, 0, 0.60);
+  }
+
+  /* Beige Liquid Glass — warm neutral card with a fine gold edge (pairs with lune noir text) */
+  .liquid-glass-beige {
+    position: relative;
+    background: linear-gradient(145deg, rgba(236, 224, 201, 0.94) 0%, rgba(214, 196, 162, 0.88) 48%, rgba(238, 228, 208, 0.92) 100%);
+    backdrop-filter: blur(24px) saturate(155%);
+    -webkit-backdrop-filter: blur(24px) saturate(155%);
+    border: 1px solid rgba(201, 162, 39, 0.42);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 252, 244, 0.85),
+      inset 0 -1.5px 1px 0 rgba(120, 96, 48, 0.20),
+      0 18px 44px -6px rgba(120, 96, 48, 0.28);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+    will-change: transform, box-shadow;
+  }
+
+  .liquid-glass-beige::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(circle at 22% 0%, rgba(255, 252, 240, 0.55), transparent 55%),
+      linear-gradient(135deg, rgba(201, 162, 39, 0.10), transparent 60%);
+    pointer-events: none;
+  }
+
+  .liquid-glass-beige:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 162, 39, 0.72);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 253, 247, 0.92),
+      inset 0 -1.5px 1px 0 rgba(120, 96, 48, 0.20),
+      0 26px 58px -6px rgba(120, 96, 48, 0.34);
+  }
+
+  /* Liquid Glass Buttons */
+
+  /* Primary Vibrant Orange + Cream Liquid Glass Button */
+  .btn-liquid-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(46, 78, 210, 0.95) 0%, rgba(23, 43, 120, 0.93) 50%, rgba(74, 116, 240, 0.90) 100%);
+    backdrop-filter: blur(18px) saturate(190%);
+    -webkit-backdrop-filter: blur(18px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    color: #ffffff;
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.70),
+      inset 0 -1.5px 1px 0 rgba(10, 20, 60, 0.38),
+      0 12px 28px -4px rgba(37, 62, 170, 0.42);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s;
+    will-change: transform, box-shadow;
+  }
+
+  .btn-liquid-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.90), transparent);
+    pointer-events: none;
+  }
+
+  .btn-liquid-primary:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.65);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.82),
+      inset 0 -1.5px 1px 0 rgba(10, 20, 60, 0.38),
+      0 18px 36px -4px rgba(37, 62, 170, 0.52);
+  }
+
+  .btn-liquid-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Emerald WhatsApp Liquid Glass Button */
+  .btn-liquid-whatsapp {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.92) 0%, rgba(18, 140, 74, 0.95) 100%);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    color: #ffffff;
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.18),
+      0 12px 28px -4px rgba(37, 211, 102, 0.35);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s;
+    will-change: transform, box-shadow;
+  }
+
+  .btn-liquid-whatsapp::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+    pointer-events: none;
+  }
+
+  .btn-liquid-whatsapp:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.72),
+      inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.18),
+      0 18px 36px -4px rgba(37, 211, 102, 0.45);
+  }
+
+  .btn-liquid-whatsapp:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Clear Liquid Glass Button */
+  .btn-liquid-clear {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.60) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    color: #0f172a;
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.90),
+      inset 0 -1px 1px 0 rgba(15, 23, 42, 0.08),
+      0 10px 25px -4px rgba(15, 23, 42, 0.10);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, background 0.25s;
+    will-change: transform, box-shadow;
+  }
+
+  .btn-liquid-clear::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+    pointer-events: none;
+  }
+
+  .btn-liquid-clear:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.78) 100%);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.98),
+      inset 0 -1px 1px 0 rgba(15, 23, 42, 0.08),
+      0 16px 32px -4px rgba(15, 23, 42, 0.14);
+  }
+
+  .btn-liquid-clear:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Metallic Gold Liquid Button — the premium "old money" accent CTA */
+  .btn-liquid-gold {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #9E7C2E 0%, #C9A227 22%, #F3E4A8 44%, #C9A227 62%, #8A6A1E 100%);
+    border: 1px solid rgba(255, 246, 214, 0.55);
+    color: #0B2A38;
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 250, 224, 0.85),
+      inset 0 -1.5px 1px 0 rgba(90, 66, 18, 0.45),
+      0 12px 28px -4px rgba(160, 128, 40, 0.42);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, filter 0.25s;
+    will-change: transform, box-shadow;
+  }
+
+  .btn-liquid-gold::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 253, 240, 0.95), transparent);
+    pointer-events: none;
+  }
+
+  .btn-liquid-gold:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06) saturate(1.05);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 250, 224, 0.95),
+      inset 0 -1.5px 1px 0 rgba(90, 66, 18, 0.45),
+      0 18px 36px -4px rgba(160, 128, 40, 0.55);
+  }
+
+  .btn-liquid-gold:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Metallic Black Liquid Button — premium lune-noir CTA with a gold edge on hover */
+  .btn-liquid-noir {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2A2C31 0%, #16171B 46%, #0B0C0E 100%);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #F5F1E6;
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.22),
+      inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.60),
+      0 12px 28px -4px rgba(0, 0, 0, 0.50);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s;
+    will-change: transform, box-shadow;
+  }
+
+  .btn-liquid-noir::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    pointer-events: none;
+  }
+
+  .btn-liquid-noir:hover {
+    transform: translateY(-2px);
+    border-color: rgba(201, 162, 39, 0.55);
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.30),
+      inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.60),
+      0 18px 36px -4px rgba(0, 0, 0, 0.60),
+      0 0 0 1px rgba(201, 162, 39, 0.12);
+  }
+
+  .btn-liquid-noir:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Shiny gold-plate badge — engraved-nameplate look for the hero eyebrow */
+  .badge-gold-plate {
+    background: linear-gradient(135deg, #9E7C2E 0%, #D9B94A 26%, #F5E7B0 46%, #C9A227 66%, #8A6A1E 100%);
+    border: 1px solid rgba(255, 248, 220, 0.6);
+    color: #002a4f;
+    box-shadow:
+      inset 0 1px 1px 0 rgba(255, 250, 228, 0.9),
+      inset 0 -1px 1px 0 rgba(90, 66, 18, 0.4),
+      0 8px 20px -6px rgba(160, 128, 40, 0.45);
+  }
+
+  /* Metallic gold text — specular sheen band between deeper golds, legible on light bg */
+  .text-gold-metallic {
+    background: linear-gradient(100deg, #8A6A1E 0%, #C9A227 20%, #F5E3A3 40%, #B8901E 52%, #E7C766 70%, #9E7C2E 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Existing utility classes */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-lg;
+  }
+
+  .glass-dark {
+    @apply bg-dark-900/80 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+
+  .logo-glass-mark {
+    @apply relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl transition-all duration-300;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.14) 48%, rgba(255, 255, 255, 0.24)),
+      rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.62),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.08),
+      0 10px 14px rgba(15, 23, 42, 0.12);
+    backdrop-filter: blur(22px) saturate(1.45);
+    -webkit-backdrop-filter: blur(22px) saturate(1.45);
+  }
+
+  .logo-glass-mark::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background:
+      radial-gradient(circle at 24% 10%, rgba(255, 255, 255, 0.55), transparent 34%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.24), transparent 42%);
+    pointer-events: none;
+  }
+
+  .logo-glass-mark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    pointer-events: none;
+  }
+
+  .logo-glass-mark:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.68),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.08),
+      0 12px 15px rgba(15, 23, 42, 0.16);
+  }
+
+  .logo-glass-image {
+    @apply relative z-10 object-contain;
+    width: 7rem;
+    height: 7rem;
+    transform: scale(1.04);
+  }
+
+  .hero-call-attention {
+    animation: hero-call-attention 2.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    box-shadow: 0 12px 26px rgb(201 162 39 / 0.26);
+    will-change: transform;
+  }
+
+  .hero-call-attention:hover,
+  .hero-call-attention:focus-visible {
+    animation: none;
+  }
+
+  .workflow-step {
+    animation: workflow-step-enter 260ms cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation-delay: calc(var(--step-index) * 70ms);
+    will-change: transform, opacity;
+  }
+
+  .workflow-line {
+    position: absolute;
+    left: 2rem;
+    right: 2rem;
+    top: 3.25rem;
+    height: 2px;
+    background: rgb(203 213 225);
+  }
+
+  .workflow-line span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform-origin: left;
+    animation: workflow-line-progress 900ms cubic-bezier(0.23, 1, 0.32, 1) both;
+    background: rgb(37 99 235);
+    will-change: transform, opacity;
+  }
+}
+
+@keyframes hero-call-attention {
+
+  0%,
+  58%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  70% {
+    transform: translateY(-2px) scale(1.015);
+  }
+
+  82% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes workflow-step-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes workflow-line-progress {
+  from {
+    opacity: 0;
+    transform: scaleX(0.08);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-call-attention {
+    animation: none;
+  }
+
+  .workflow-step,
+  .workflow-line span {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* Base styles for the booking dialog */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* Thank-you page entrance animations */
+@keyframes ty-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ty-pop {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ty-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.ty-in {
+  opacity: 0;
+  animation: ty-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ty-pop {
+  opacity: 0;
+  animation: ty-pop 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ty-check {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: ty-draw 0.5s ease-out 0.5s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ty-in, .ty-pop { animation: none; opacity: 1; transform: none; }
+  .ty-check { animation: none; stroke-dashoffset: 0; }
+}

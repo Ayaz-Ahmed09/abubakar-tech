@@ -1,0 +1,32 @@
+{
+  "name": "abubakar-tech",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "eslint .",
+    "start": "next start"
+  },
+  "dependencies": {
+    "date-fns": "^4.4.0",
+    "lucide-react": "^1.17.0",
+    "next": "^16.2.12",
+    "react": "^19.2.6",
+    "react-day-picker": "^10.0.1",
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^10.3.0",
+    "eslint-config-next": "^16.2.12",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.6.0"
+  }
+}
