@@ -1,16 +1,32 @@
-# React + Vite
+# Abubakar Tech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend-only web project built with **Next.js**, **Tailwind CSS**, and **JavaScript/JSX**. It provides the user-facing interface and styling; it does not include a backend or server-side data service.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Next.js** — React framework for building the frontend
+- **React** — component-based UI
+- **JavaScript (JSX)** — language and syntax used to write the interface
+- **Tailwind CSS** — utility-first styling
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Install dependencies and start the development server:
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Available scripts
+
+- `npm run dev` — start the local development server
+- `npm run build` — create a production build
+- `npm run start` — serve the production build
+- `npm run lint` — run the project's lint checks, if configured
+
+## Project scope
+
+This repository contains the frontend only. Any data, authentication, or other backend functionality would need to be provided separately.
